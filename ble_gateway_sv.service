@@ -1,0 +1,10 @@
+[Unit]
+Description = BLE Gateway Server
+
+[Service]
+ExecStart=/usr/bin/python /usr/local/ble_gateway_sv/ble_gateway_sv.py
+Restart=always
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
