@@ -9,16 +9,16 @@
 ***
 
 ## Summary
- raspberry Pi ,BLE gateway server (BLE Central device), http send possible
-Peripheral device -- RN4020 BLE + atmega328P ,Low power version.
+* raspberry Pi ,BLE gateway server (BLE Central device), http send possible
+* Peripheral device -- RN4020 BLE + atmega328P ,Low power version.
 
 ***
 
 ### thanks
 
-* 
+* bluepy
+https://github.com/IanHarvey/bluepy
 
-* 
 
 ***
 ### Usage
@@ -27,9 +27,4 @@ Peripheral device -- RN4020 BLE + atmega328P ,Low power version.
 * ble_gateway_sv.py send_http() -- request param setting
 * sudo python ble_gateway_sv.py
 
-
-
-
-### /proj-1 :
- proj-1, desc 
 
