@@ -6,6 +6,7 @@
 
  date    : 2017/07/10
 
+ update  : 2017/07/28
 ***
 
 ## Summary
@@ -29,6 +30,16 @@ https://github.com/IanHarvey/bluepy
 * http_func.py -- http send URL, setting 
 * ble_gateway_sv.py send_http() -- request param setting
 * sudo python ble_gateway_sv.py
+
+***
+
+### update
+* v0.9.11 -- advertize, receive process change (max 25byte Data)
+* v0.9,1  new
+
+ old version: 
+
+https://github.com/kuc-arc-f/ble_gateway_sv_0_9_1
 
 ***
 
