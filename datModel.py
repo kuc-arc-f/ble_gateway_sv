@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*- 
 # クラス
+import appConst
 
 #define
 mMaxdevice=5
@@ -8,13 +9,14 @@ mRow = {"adv_name": ""
 , "val_1" : ""
 , "val_2" : ""
 , "val_3" : ""
+, "val_4" : ""
 } #dict
 mNG_CODE=0
 mOK_CODE=1
 
 #datModel
 class datModelClass:
-    mMax_GapLength=15
+    # mMax_GapLength=15
     
     #
     def __init__(self):
@@ -29,6 +31,7 @@ class datModelClass:
     		mBleDat[i]["val_1"]=""
     		mBleDat[i]["val_2"]=""
     		mBleDat[i]["val_3"]=""
+    		mBleDat[i]["val_4"]=""
     
     def set_advName(self,  iNum,  name):
     	mBleDat[iNum]["adv_name"]= name
@@ -39,7 +42,12 @@ class datModelClass:
     def debug_printDat(self):
     	#print mBleDat
     	for i in range(0 ,mMaxdevice  ):
-    		print ( "i="+str(i)+ ", name=" + mBleDat[i]["adv_name"] +",val_1=" + mBleDat[i]["val_1"] +",val_2=" + mBleDat[i]["val_2"]+",val_3=" + mBleDat[i]["val_3"]  )
+    		sVal_1=",val_1=" + mBleDat[i]["val_1"]
+    		sVal_2=",val_2=" + mBleDat[i]["val_2"]
+    		sVal_3=",val_3=" + mBleDat[i]["val_3"]
+    		sVal_4=",val_4=" + mBleDat[i]["val_4"]
+#    		print ( "i="+str(i)+ ", name=" + mBleDat[i]["adv_name"] +",val_1=" + mBleDat[i]["val_1"] +",val_2=" + mBleDat[i]["val_2"]+",val_3=" + mBleDat[i]["val_3"]  )
+    		print ( "i="+str(i)+ ", name=" + mBleDat[i]["adv_name"] +sVal_1 + sVal_2+ sVal_3 +sVal_4 )
     
     def set_datByAdvname(self, name, value , field ):
     	for i in range(0 ,mMaxdevice  ):
@@ -50,6 +58,8 @@ class datModelClass:
     				mBleDat[i]["val_2"]= value
     			if( field== 3):
     				mBleDat[i]["val_3"]= value
+    			if( field== 4):
+    				mBleDat[i]["val_4"]= value
     		
     def get_datByAdvname(self ,name , field ):
     	sRet=""
@@ -61,6 +71,8 @@ class datModelClass:
     				sRet=mBleDat[i]["val_2"]
     			if( field== 3):
     				sRet=mBleDat[i]["val_3"]
+    			if( field== 4 ):
+    				sRet=mBleDat[i]["val_4"]
     	return sRet
     	
     def recvCount(self):
@@ -102,17 +114,28 @@ class datModelClass:
     	return sRet
     	
     def set_advValues(self, name , sBuff ):
+    	clsConst=appConst.appConstClass()
     	sV1=""
     	sV2=""
-    	for j in range(3 ,9 ):
+    	sV3=""
+    	sV4=""
+    	for j in range(3 ,8 ):
     		sV1 += sBuff[j]
-    	for jj in range(9 ,15 ):
-    		sV2 += sBuff[jj ]
-    	
+    	for j1 in range(8 ,13 ):
+    		sV2 += sBuff[j1 ]
+    	if (len(sBuff) >= clsConst.mMax_GapLength_25 ):
+    		for j2 in range(13 ,18 ):
+    			sV3 += sBuff[j2 ]
+    		for j3 in range(18 ,23 ):
+    			sV4 += sBuff[j3 ]
+    		
     	for i in range(0 ,mMaxdevice  ):
     		if(mBleDat[i ]["adv_name"]==name ):
     			mBleDat[i ]["val_1"]=sV1
     			mBleDat[i ]["val_2"]=sV2
+    			mBleDat[i ]["val_3"]=sV3
+    			mBleDat[i ]["val_4"]=sV4
+
     	
 #    def test(self, sId):
 #   	print "test"
